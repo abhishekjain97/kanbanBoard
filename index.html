@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="toolbox-container">
+        <div class="board-">
+            <h2>Kanban Board</h2>
+        </div>
+        <!-- <div class="board-status">
+            <div class="backlog color"></div>
+            <div class="processing color"></div>
+            <div class="review color"></div>
+            <div class="complete color"></div>
+        </div> -->
+        <div class="action-button">
+            <div class="add-btn">
+                <i class="fa-solid fa-plus"></i>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <div class="backlog-tasks task-list">
+            <div class="backlog task-head"><h4>TO DO</h4></div>
+            <div class="task-body"  id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <!-- <div class="task-item">
+                    <h4>Task Id - 1234</h4>
+                    <p>Check out the all-new Web Awesome AND get an exclusive lifetime discount on Font Awesome Pro!</p>
+                    <i class="fa-solid fa-xmark"></i>
+                    <i class="fa-solid fa-lock task_lock_unlock_icon"></i>
+                </div> -->
+            </div>
+        </div>
+        <div class="processing-tasks task-list">
+            <div class="processing task-head"><h4>PROCESSING</h4></div>
+            <div class="task-body" id="processing" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </div>
+        </div>
+        <div class="review-tasks task-list">
+            <div class="review task-head"><h4>IN REVIEW</h4></div>
+            <div class="task-body" id="review" ondrop="drop(event)" ondragover="allowDrop(event)">
+                
+            </div>
+        </div>
+        <div class="complete-tasks task-list">
+            <div class="complete task-head"><h4>DONE</h4></div>
+            <div class="task-body" id="complete" ondrop="drop(event)" ondragover="allowDrop(event)">
+                
+            </div>
+        </div>
+    </main>
+
+
+    <section class="ticket-modal">
+        <div class="modal_overlay"></div>
+        <div class="modal_content">
+            <textarea class="ticket_text" placeholder="Enter message here..."></textarea>
+            <div class="modal-color">
+                <div class="backlog active"></div>
+                <div class="processing"></div>
+                <div class="review"></div>
+                <div class="complete"></div>
+            </div>
+            <i class="fa-solid fa-xmark close_modal_btn"></i>
+        </div>
+    </section>
+
+    <footer>
+        <p>Note:- Drag your tasks for updating status</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/6e6352e7f7.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/shortid-dist@1.0.5/dist/shortid-2.2.13.min.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

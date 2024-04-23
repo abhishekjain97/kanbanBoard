@@ -1,0 +1,248 @@
+@import url(https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@200..900&display=swap);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+
+h2, h4, p {
+    margin: 0;
+    padding: 0;
+}
+
+.toolbox-container {
+    display: flex;
+    background-color: #e5e5e5;
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.board-status {
+    display: flex;
+    width: 20rem;
+    justify-content: space-around;
+    /* background-color: gray; */
+    /* padding: 0.5rem; */
+}
+
+.board-status > * {
+    width: 4rem;
+    height: 3rem;
+}
+
+.action-button {
+    display: flex;
+    align-items: center;
+}
+
+.add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 3rem;
+    background-color: grey;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: green;
+    color: #ffffff;
+}
+
+.add-btn > i {
+    font-size: 2rem;
+}
+
+
+.backlog {
+    background-color: tomato;
+}
+
+.processing {
+    background-color: yellow;
+}
+
+.review {
+    background-color: lightgreen;
+}
+
+.complete {
+    background-color: lightblue;
+}
+
+.main-container {
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.main-container > * {
+    width: 20rem;
+    background-color: #e5e5e5;
+    border: 0.1rem solid;
+    height: 80%;
+}
+
+.task-list > * {
+    width: 100%;
+    height: 90%;
+    overflow: auto;
+}
+
+
+.task-head {
+    display: flex;
+    height: 10%;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-item {
+    border-bottom: 0.1rem dashed;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    cursor: all-scroll;
+}
+
+.task-item h4 {
+    padding-bottom: 1rem;
+}
+
+.task-item i.fa-xmark {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.task-item i.fa-xmark:hover {
+    color: red;
+}
+
+.task-item .task_lock_unlock_icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+}
+
+.backlog-tasks .task-body {
+    scrollbar-color: tomato #ffe3de;
+    scrollbar-width: thin;
+    background-color: #ffe3de;
+}
+
+.processing-tasks .task-body {
+    scrollbar-color: yellow #fffff2;
+    scrollbar-width: thin;
+    background-color: #fffff2;
+}
+
+.review-tasks .task-body {
+    scrollbar-color: lightgreen #f6fff6;
+    scrollbar-width: thin;
+    background-color: #f6fff6;
+}
+
+.complete-tasks .task-body {
+    scrollbar-color: lightblue #effbff;
+    scrollbar-width: thin;
+    background-color: #effbff;
+}
+
+/* @media only screen and (max-width: 700px) {
+    .main-container {
+        flex-direction: column;
+    }
+} */
+
+
+.ticket-modal {
+    width: 100%;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    top: 0;
+}
+
+.modal_overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.modal_content {
+    display: flex;
+    width: 45%;
+    height: 50%;
+    background-color: #e5e5e5;
+    position: absolute;
+    top: 25vh;
+    left: 50vh;
+}
+
+.modal_content textarea {
+    height: 100%;
+    width: 70%;   
+    padding: 1rem;
+    resize: none;
+    border: none;
+}
+
+.modal-color {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.modal-color > * {
+    width: 8rem;
+    height: 4rem;
+}
+
+.modal-color .active {
+    border: 4px solid gray;
+}
+
+.modal_content i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    height: 5vh;
+    width: 100%;
+    background-color:black;
+    align-items: center;
+    justify-content: center;
+}
+
+footer > p {
+    color: #ffffff;
+}

@@ -1,6 +1,6 @@
 # kanbanBoard
 
-Functionality in Kanban Board
+Functionalities in Kanban Board
 - Add task
 - Update task
 - Remove task

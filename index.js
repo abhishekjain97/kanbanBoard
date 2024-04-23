@@ -152,11 +152,13 @@ function handalLockUnlockBtn(element, ticketId) {
 
     lockUnlockBtn.addEventListener("click", function() {
         if(lockUnlockBtn.classList.contains("fa-lock")) {
+            contentBox.style.cursor = "text"
             lockUnlockBtn.classList.remove("fa-lock")
             lockUnlockBtn.classList.add("fa-lock-open")
             contentBox.setAttribute("contenteditable", "true")
         }
         else {
+            contentBox.style.cursor = "inherit"
             lockUnlockBtn.classList.remove("fa-lock-open")
             lockUnlockBtn.classList.add("fa-lock")
             contentBox.setAttribute("contenteditable", "false")

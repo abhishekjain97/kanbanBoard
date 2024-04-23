@@ -167,13 +167,6 @@ h2, h4, p {
     background-color: #effbff;
 }
 
-/* @media only screen and (max-width: 700px) {
-    .main-container {
-        flex-direction: column;
-    }
-} */
-
-
 .ticket-modal {
     width: 100%;
     height: 100vh;
@@ -245,4 +238,14 @@ footer {
 
 footer > p {
     color: #ffffff;
+}
+
+
+@media only screen and (max-width: 1278px) {
+    .main-container {
+        overflow: auto;
+    }
+    .main-container > * {
+        margin: 10px 0;
+    }
 }

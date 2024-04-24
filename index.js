@@ -100,6 +100,7 @@ modal_cont.addEventListener("keydown", function(e) {
         createTikcet(ticketId, textContent, modalPriorityColor)
     }
 })
+
 // Press add btn to add ticket macanisome
 add_ticket_btn.addEventListener("click", function(e) {
     const textContent = textArea.value

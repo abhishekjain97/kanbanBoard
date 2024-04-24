@@ -3,11 +3,43 @@ const add_modal_btn = document.querySelector(".add-btn")
 const modal_close_btn = document.querySelector(".close_modal_btn")
 const modal_cont = document.querySelector(".ticket-modal")
 const textArea = document.querySelector(".ticket_text")
+const taskHead = document.querySelectorAll(".task-head")
+const add_ticket_btn = document.querySelector(".add_task_btn")
 
 let modalOpenCloseFlag = false
 
+// let backlogFlag = true
+// let processingFlag = true
+// let reviewFlag = true
+// let comppleteFlag = true
 
 const taskArray = []
+
+// hide show task body in phone view
+// taskHead.forEach(function (e) {
+//     e.addEventListener("click", function() {
+//         const task = e.classList[0]
+//         console.log(task);
+//         const body = document.querySelector("#"+task)
+
+//         if(task == 'backlog') {
+//             backlogFlag = !backlogFlag
+            
+
+//             if(backlogFlag) {
+//                 body.style.display = 'block'
+//             } else {
+//                 body.style.display = 'none'
+//             }
+//         } else if (task == 'processing') {
+
+//         } else if (task == 'review') {
+
+//         } else if (task == 'complete') {
+
+//         }
+//     })
+// })
 
 // check is we have anything in local storage then append in DOM
 if(localStorage.getItem("tasks")) {
@@ -67,6 +99,12 @@ modal_cont.addEventListener("keydown", function(e) {
         const ticketId = shortid()
         createTikcet(ticketId, textContent, modalPriorityColor)
     }
+})
+// Press add btn to add ticket macanisome
+add_ticket_btn.addEventListener("click", function(e) {
+    const textContent = textArea.value
+    const ticketId = shortid()
+    createTikcet(ticketId, textContent, modalPriorityColor)
 })
 
 // function for drag and drop 
@@ -175,3 +213,7 @@ function handalLockUnlockBtn(element, ticketId) {
 function getTaskIndexFromArray(ticketId) {
     return taskArray.findIndex((ticket) => ticket.ticketId == ticketId)
 }
+
+
+
+/// hide unhide content in phone view

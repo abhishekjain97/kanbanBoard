@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kanban Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +26,10 @@
 
     <main class="main-container">
         <div class="backlog-tasks task-list">
-            <div class="backlog task-head"><h4>TO DO</h4></div>
+            <div class="backlog task-head">
+                <h4>TO DO</h4>
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
             <div class="task-body"  id="backlog" ondrop="drop(event)" ondragover="allowDrop(event)">
                 <!-- <div class="task-item">
                     <h4>Task Id - 1234</h4>
@@ -37,19 +40,28 @@
             </div>
         </div>
         <div class="processing-tasks task-list">
-            <div class="processing task-head"><h4>PROCESSING</h4></div>
+            <div class="processing task-head">
+                <h4>PROCESSING</h4>
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
             <div class="task-body" id="processing" ondrop="drop(event)" ondragover="allowDrop(event)">
 
             </div>
         </div>
         <div class="review-tasks task-list">
-            <div class="review task-head"><h4>IN REVIEW</h4></div>
+            <div class="review task-head">
+                <h4>IN REVIEW</h4>
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
             <div class="task-body" id="review" ondrop="drop(event)" ondragover="allowDrop(event)">
                 
             </div>
         </div>
         <div class="complete-tasks task-list">
-            <div class="complete task-head"><h4>DONE</h4></div>
+            <div class="complete task-head">
+                <h4>DONE</h4>
+                <i class="fa-solid fa-angle-up"></i>
+            </div>
             <div class="task-body" id="complete" ondrop="drop(event)" ondragover="allowDrop(event)">
                 
             </div>
@@ -66,6 +78,10 @@
                 <div class="processing"></div>
                 <div class="review"></div>
                 <div class="complete"></div>
+                <!-- <div class="add_btn">
+                    <button>Add</button>
+                </div> -->
+                <button class="add_task_btn">Add</button>
             </div>
             <i class="fa-solid fa-xmark close_modal_btn"></i>
         </div>

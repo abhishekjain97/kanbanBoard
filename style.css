@@ -149,6 +149,12 @@ h2, h4, p {
     color: red;
 }
 
+.task-devider {
+    background-color: #e5e5e5;
+    height: 2px;
+    width: 100%;
+}
+
 .task-item .task_lock_unlock_icon {
     position: absolute;
     bottom: 5px;

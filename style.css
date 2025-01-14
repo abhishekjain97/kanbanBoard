@@ -156,6 +156,10 @@ h2, h4, p {
     cursor: pointer;
 }
 
+.task-item::after {
+
+}
+
 .backlog-tasks .task-body {
     scrollbar-color: tomato #ffe3de;
     scrollbar-width: thin;

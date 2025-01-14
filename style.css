@@ -157,7 +157,7 @@ h2, h4, p {
 }
 
 .task-item::after {
-
+    content: "Drag here"
 }
 
 .backlog-tasks .task-body {

@@ -145,6 +145,7 @@ function createTikcet(ticketId, ticketContent, ticketColor) {
     taskItem.setAttribute("id", ""+ticketId)
 
     taskDevider.setAttribute("class", "task-devider")
+    taskDevider.innerHTML = `Drop here...`
 
     taskItem.innerHTML = `<h4>Task Id - ${ticketId}</h4>
                 <p>${ticketContent}</p>

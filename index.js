@@ -93,13 +93,13 @@ modal_color_picker.forEach(function(element) {
 
 
 // press shift to add ticket macanisome
-modal_cont.addEventListener("keydown", function(e) {
-    if(e.key == 'Shift') {
-        const textContent = textArea.value
-        const ticketId = shortid()
-        createTikcet(ticketId, textContent, modalPriorityColor)
-    }
-})
+// modal_cont.addEventListener("keydown", function(e) {
+//     if(e.key == 'Shift') {
+//         const textContent = textArea.value
+//         const ticketId = shortid()
+//         createTikcet(ticketId, textContent, modalPriorityColor)
+//     }
+// })
 
 // Press add btn to add ticket macanisome
 add_ticket_btn.addEventListener("click", function(e) {

@@ -138,10 +138,13 @@ function createTikcet(ticketId, ticketContent, ticketColor) {
     const priorityTaskCont = document.querySelector("."+ticketColor+"-tasks > .task-body")
 
     const taskItem = document.createElement("div")
+    const taskDevider = document.createElement("div")
     taskItem.setAttribute("class", "task-item")
     taskItem.setAttribute("draggable", "true")
     taskItem.setAttribute("ondragstart", "drag(event)")
     taskItem.setAttribute("id", ""+ticketId)
+
+    taskDevider.setAttribute("class", "task-devider")
 
     taskItem.innerHTML = `<h4>Task Id - ${ticketId}</h4>
                 <p>${ticketContent}</p>
@@ -149,6 +152,7 @@ function createTikcet(ticketId, ticketContent, ticketColor) {
                 <i class="fa-solid fa-lock task_lock_unlock_icon"></i>`
                 
     priorityTaskCont.appendChild(taskItem)
+    priorityTaskCont.appendChild(taskDevider)
     
 
     textArea.value = ""

@@ -132,6 +132,7 @@ h2, h4, p {
     flex-direction: column;
     position: relative;
     cursor: all-scroll;
+    margin-bottom: 8px;
 }
 
 .task-item h4 {

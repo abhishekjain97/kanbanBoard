@@ -3,8 +3,11 @@ const add_modal_btn = document.querySelector(".add-btn")
 const modal_close_btn = document.querySelector(".close_modal_btn")
 const modal_cont = document.querySelector(".ticket-modal")
 const textArea = document.querySelector(".ticket_text")
+const taskList = document.querySelectorAll(".task-list")
 const taskHead = document.querySelectorAll(".task-head")
 const add_ticket_btn = document.querySelector(".add_task_btn")
+
+const colorArr = ['backlog', 'processing', 'review', 'complete']
 
 let modalOpenCloseFlag = false
 
@@ -40,6 +43,29 @@ const taskArray = []
 //         }
 //     })
 // })
+
+
+// handal ticket edit and remove using propogation
+taskList.forEach((ele) => {
+    ele.addEventListener("click", (e) => {
+        const action = e.target
+        const targetId = action.getAttribute("data-id")
+        
+
+        // for delete task
+        if(action.classList.contains("fa-xmark")) {
+            handalRemoveTicket(targetId)
+        }
+
+        // for edit task
+        if(action.classList.contains("task_lock_unlock_icon")) {
+            handalLockUnlockBtn(targetId)
+        }
+
+        // console.log(action);
+    })
+})
+
 
 // check is we have anything in local storage then append in DOM
 if(localStorage.getItem("tasks")) {
@@ -118,18 +144,57 @@ function drag(ev) {
 }
 
 function drop(ev) {
-    ev.preventDefault();
-    const updated_color = ev.target.id
     
-    const taskId = ev.dataTransfer.getData("taskId");
+    ev.preventDefault();
 
-    // get task by task id
-    const currentTask = taskArray.find((task) => task.ticketId == taskId)
-    currentTask.ticketColor = updated_color
+    
+    // validate if update color exist into our color array or not
+    if(colorArr.includes(ev.target.parentElement.id) || colorArr.includes(ev.target.id)) {
+        let updated_color
+        if(colorArr.includes(ev.target.parentElement.id)) {
+            updated_color = ev.target.parentElement.id
+        } else if (colorArr.includes(ev.target.id)) {
+            updated_color = ev.target.id
+        }
 
-    ev.target.appendChild(document.getElementById(taskId));
+        const taskId = ev.dataTransfer.getData("taskId");
+        const taskDropContainer = document.querySelector("#"+updated_color)
 
-    localStorage.setItem("tasks", JSON.stringify(taskArray))
+        // get task by task id
+        const currentTask = taskArray.find((task) => task.ticketId == taskId)
+        currentTask.ticketColor = updated_color
+
+        // ev.target.appendChild(document.getElementById(taskId))
+        taskDropContainer.append(document.getElementById(taskId))
+        
+        localStorage.setItem("tasks", JSON.stringify(taskArray))
+    }
+    
+
+
+
+    // const updatedColor = ev.target.id;
+    // const taskId = ev.dataTransfer.getData("taskId");
+    // const taskElement = document.getElementById(taskId);
+    // const taskDropContainer = document.getElementById(updatedColor);
+
+    // console.log(ev.target.parentElement);
+    
+    // // If the drop target is a task, move the dropped task to the parent div
+    // if (taskElement.classList.contains("task-item")) {
+    //     taskDropContainer.appendChild(taskElement);
+    // } else { // Otherwise, it's the parent div, so just append the task
+    //     const parentDiv = taskElement.closest(".task-list").querySelector(".task-body");
+    //     parentDiv.appendChild(taskElement);
+    // }
+
+    // // Update the task's color in the taskArray
+    // const taskIndex = taskArray.findIndex(task => task.ticketId === taskId);
+    // if (taskIndex !== -1) {
+    //     taskArray[taskIndex].ticketColor = updatedColor;
+    //     localStorage.setItem("tasks", JSON.stringify(taskArray));
+    // }
+    
 }
 
 // haldale create ticket
@@ -145,16 +210,16 @@ function createTikcet(ticketId, ticketContent, ticketColor) {
 
     taskItem.innerHTML = `<h4>Task Id - ${ticketId}</h4>
                 <p>${ticketContent}</p>
-                <i class="fa-solid fa-xmark"></i>
-                <i class="fa-solid fa-lock task_lock_unlock_icon"></i>`
+                <i class="fa-solid fa-xmark" data-id="${ticketId}"></i>
+                <i class="fa-solid fa-lock task_lock_unlock_icon" data-id="${ticketId}"></i>`
                 
     priorityTaskCont.appendChild(taskItem)
     
 
     textArea.value = ""
 
-    handalRemoveTicket(taskItem, ticketId)
-    handalLockUnlockBtn(taskItem, ticketId)
+    // handalRemoveTicket(taskItem, ticketId)
+    // handalLockUnlockBtn(taskItem, ticketId)
 
     // close modal after adding task successfully
     modalOpenCloseFlag = !modalOpenCloseFlag
@@ -169,27 +234,26 @@ function createTikcet(ticketId, ticketContent, ticketColor) {
 
 
 // remove ticket from DOM and array
-function handalRemoveTicket(element, ticketId) {
-    const removeBtn = element.querySelector("i.fa-xmark")
+function handalRemoveTicket(ticketId) {
+    const task = document.getElementById(ticketId)
 
-    removeBtn.addEventListener("click", function() {
-        element.remove()
+    task.remove()
 
-        // remove task from array
-        const ticketIdx = getTaskIndexFromArray(ticketId)
-        taskArray.splice(ticketIdx, 1)
+    // remove task from array
+    const ticketIdx = getTaskIndexFromArray(ticketId)
+    taskArray.splice(ticketIdx, 1)
 
-        localStorage.setItem("tasks", JSON.stringify(taskArray))
-    })
+    localStorage.setItem("tasks", JSON.stringify(taskArray))
 }
 
 // update task in DOM and array
-function handalLockUnlockBtn(element, ticketId) {
-    const lockUnlockBtn = element.querySelector(".task_lock_unlock_icon")
+function handalLockUnlockBtn(ticketId) {
 
-    const contentBox = element.querySelector("p")
-
-    lockUnlockBtn.addEventListener("click", function() {
+    const task = document.getElementById(ticketId)
+    const contentBox = task.querySelector("p")
+    const lockUnlockBtn = task.querySelector(".task_lock_unlock_icon")
+    
+    // lockUnlockBtn.addEventListener("click", function() {
         if(lockUnlockBtn.classList.contains("fa-lock")) {
             contentBox.style.cursor = "text"
             lockUnlockBtn.classList.remove("fa-lock")
@@ -208,7 +272,7 @@ function handalLockUnlockBtn(element, ticketId) {
 
             localStorage.setItem("tasks", JSON.stringify(taskArray))
         }
-    })
+    // })
 }
 
 function getTaskIndexFromArray(ticketId) {
